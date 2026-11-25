@@ -1,4 +1,4 @@
-<!-- BEGIN:nextjs-agent-rules -->
+]633;E;{   git show HEAD:AGENTS.md\x3b   printf '\\n'\x3b   cat AGENTS.md\x3b } > AGENTS.tmp && mv AGENTS.tmp AGENTS.md;649f01e2-7f78-46b3-9642-39c96b3a9405]633;C<!-- BEGIN:nextjs-agent-rules -->
 
 ## This is NOT the Next.js you know
 
@@ -7,3 +7,120 @@ This version has breaking changes — APIs, conventions, and file structure may 
 This block is written and re-added by `next dev` — verify at `node_modules/next/dist/server/lib/generate-agent-files.js`. Removing it from a diff only re-creates the uncommitted change; committing it with your work keeps the tree clean.
 
 <!-- END:nextjs-agent-rules -->
+
+
+# Next Leap — Frontend Engineering Guidelines
+
+## 1. Project Context
+
+Next Leap is a student opportunity discovery platform developed
+for the STACK 2026 hackathon.
+
+The frontend and backend are maintained in separate repositories
+and deployed independently.
+
+## 2. Team Ownership
+
+- Project Leader: product requirements, UI/UX, and design.
+- Backend Engineer: APIs, database, and business logic.
+- Frontend Engineer: UI implementation, interaction, API
+  integration, accessibility, testing, and deployment.
+
+Do not invent product requirements or modify approved designs
+without coordination.
+
+## 3. Technology Stack
+
+- Next.js App Router
+- React
+- TypeScript
+- Tailwind CSS
+- npm
+
+Use existing dependencies before introducing new libraries.
+Explain the reasoning and trade-offs of additional dependencies.
+
+## 4. Architecture
+
+- Use feature-based modular architecture.
+- Keep route composition inside src/app.
+- Place shared UI components inside src/components.
+- Place domain-specific modules inside src/features.
+- Place shared utilities and API infrastructure inside src/lib.
+- Prefer Server Components by default.
+- Use Client Components when browser APIs, state, or event
+  handlers are required.
+- Keep authoritative business logic in backend services.
+
+Do not introduce unnecessary abstractions or premature
+optimization.
+
+## 5. API Integration
+
+- Follow the API contract agreed with the backend engineer.
+- Do not invent undocumented endpoints or response fields.
+- Separate API communication from presentation components.
+- Handle loading, empty, error, and success states.
+- Keep credentials and secrets out of client-side code.
+- Clearly distinguish mock data from real API responses.
+- Do not bypass backend authentication or authorization.
+
+## 6. UI Implementation
+
+- Treat the approved Figma design as the visual reference.
+- Use reusable components and agreed design tokens.
+- Ensure responsive layouts.
+- Prefer semantic HTML.
+- Support keyboard navigation and visible focus states.
+- Maintain accessible labels and sufficient color contrast.
+- Avoid hardcoded values when an agreed design token exists.
+
+## 7. Code Quality
+
+- Maintain TypeScript strict mode.
+- Avoid explicit any unless justified.
+- Use descriptive names.
+- Prefer small, focused modules.
+- Remove unused imports and dead code.
+- Use relative imports for nearby modules.
+- Use the @/ alias for cross-directory imports.
+
+## 8. Development Workflow
+
+For each implementation increment:
+
+1. Review requirements and relevant existing files.
+2. Explain the proposed changes and trade-offs.
+3. Define acceptance criteria.
+4. Implement the smallest meaningful change.
+5. Run relevant quality checks.
+6. Report results, limitations, and remaining risks.
+
+Do not modify unrelated files.
+
+## 9. Git Conventions
+
+Use short-lived branches and Conventional Commits.
+
+Branch prefixes:
+- feat/
+- fix/
+- chore/
+- refactor/
+- test/
+- docs/
+
+Do not commit secrets, environment credentials,
+or generated build artifacts.
+
+## 10. Definition of Done
+
+An implementation is considered complete when:
+
+- Acceptance criteria are satisfied.
+- Relevant functional behavior is verified.
+- ESLint passes.
+- TypeScript checks pass.
+- Production build passes.
+- Relevant responsive and accessibility checks pass.
+- No unrelated changes are introduced.
