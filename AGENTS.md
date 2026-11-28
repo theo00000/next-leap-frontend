@@ -124,3 +124,78 @@ An implementation is considered complete when:
 - Production build passes.
 - Relevant responsive and accessibility checks pass.
 - No unrelated changes are introduced.
+
+
+## 11. Product Requirements and Design References
+
+### Reference Documents
+
+- Product requirements: `docs/prd/`
+- Frontend requirements:
+  `docs/prd/PRD-05-frontend-next-leap.md`
+- Design specification: `docs/design/DESIGN.md`
+- Figma:
+  https://www.figma.com/design/HOunyZ78Rk2wdy3w0aLMub/Stack-2026
+
+### Source of Truth
+
+- PRDs define functional requirements and business rules.
+- Figma defines visual design and layout.
+- DESIGN.md defines frontend design implementation standards.
+- API contracts define frontend-backend communication.
+- AGENTS.md defines engineering conventions.
+
+Report conflicts between these references before making
+decisions that affect product behavior or approved designs.
+
+### Implementation Rules
+
+Before implementing a feature:
+
+1. Read PRD-05 and the relevant feature-specific PRD.
+2. Read DESIGN.md.
+3. Inspect the corresponding Figma frame.
+4. Inspect existing components and implementation.
+5. Identify acceptance criteria and unresolved decisions.
+
+During implementation:
+
+- Use semantic design tokens from globals.css.
+- Reuse shared UI primitives and existing components.
+- Reuse OpportunityCard across student pages and operation previews.
+- Follow mobile-first and accessibility requirements.
+- Implement relevant loading, empty, error, and success states.
+- Do not invent undocumented requirements or API contracts.
+- Treat Proposed and TBD decisions as provisional.
+- Do not introduce unsupported claims or fabricated metrics.
+- Do not modify product requirements or approved designs
+  without authorization from the Project Leader.
+
+If a required reference is unavailable, report the limitation
+and proceed only with clearly supported requirements.
+
+
+## 12. Testing and Verification
+
+Use the existing Vitest and React Testing Library infrastructure.
+
+- Test user-visible behavior rather than implementation details.
+- Prefer accessible queries such as getByRole and getByLabelText.
+- Test critical form validation and interaction states.
+- Cover relevant loading, empty, error, and success states.
+- Test shared components and pure utility functions.
+- Keep tests deterministic and independent.
+- Do not access production APIs from automated unit tests.
+- Clearly identify mock data and fixtures.
+
+Run the relevant verification commands:
+
+- npm run test
+- npm run lint
+- npm run typecheck
+- npm run build
+- git diff --check
+
+Do not claim that a check passed unless it was actually executed
+successfully.
+
